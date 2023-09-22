@@ -1,0 +1,35 @@
+package com.promineotech;
+
+import java.math.BigDecimal;
+
+public class TestDemo {
+
+	public int addPositive(int a, int b) {
+
+		if (a > 0 && b > 0) {
+			return a + b;
+		} else
+			throw new IllegalArgumentException("Both parameters must be positive!");
+
+	}
+
+	public BigDecimal splitTheBill(BigDecimal billTotal, int numOfPeople, BigDecimal tip) throws ArithmeticException {
+		if ((billTotal.compareTo(BigDecimal.ZERO) <= 0) || numOfPeople < 0)  {
+			throw new IllegalArgumentException("Both parameters must be positive!");
+		}
+		if (numOfPeople == 0) {
+			throw new ArithmeticException("Dividing by Zero not possible!");
+		} else {
+			BigDecimal t = new BigDecimal(numOfPeople);									// if there is any remainder when splitting the bill evenly, the remainder is added to the tip
+			BigDecimal remainder = billTotal.remainder(t);
+			tip = (billTotal.multiply(BigDecimal.valueOf((20)/100))).add(remainder);
+			
+			 															
+			BigDecimal IndividualBill = (billTotal.add(tip)).divide(t);
+			return IndividualBill;  
+			}
+				 
+
+			
+		}
+	}

@@ -1,0 +1,32 @@
+package com.promineotech;
+
+public class TestDemo {
+
+	public int addPositive(int a, int b) {
+
+		if (a > 0 && b > 0) {
+			return a + b;
+		} else
+			throw new IllegalArgumentException("Both parameters must be positive!");
+
+	}
+
+	public double splitTheBill(double billTotal, int numOfPeople, double tip) throws ArithmeticException {
+		if (billTotal <= 0 || numOfPeople < 0) {
+			throw new IllegalArgumentException("Both parameters must be positive!");
+		}
+		if (numOfPeople == 0) {
+			throw new ArithmeticException("Dividing by Zero not possible!");
+		} else {
+			double individualBill;
+			tip = billTotal * .2;
+			if ((billTotal % numOfPeople) != 0) { // if there is any remainder when splitting the bill evenly, the
+													// remainder is added to the tip
+				tip += (billTotal % numOfPeople);
+			}
+			individualBill = (billTotal + tip) / numOfPeople;
+
+			return individualBill;
+		}
+	}
+}

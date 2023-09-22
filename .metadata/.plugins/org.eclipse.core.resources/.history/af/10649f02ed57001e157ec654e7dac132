@@ -1,0 +1,17 @@
+package com.promineotech;
+
+import org.junit.jupiter.api.extension.ParameterResolutionException;
+
+public class ParamResException extends ParameterResolutionException {
+
+	public ParamResException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	public ParamResException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+}

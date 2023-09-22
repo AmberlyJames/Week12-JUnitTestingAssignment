@@ -1,0 +1,25 @@
+INDEX VERSION 1.134+C:\Users\amber\eclipse-JUnitTestingDemo\.metadata\.plugins\org.eclipse.jdt.core
+2117814188.index
+1391440363.index
+3413725848.index
+3762354639.index
+692078923.index
+1118040606.index
+4275669669.index
+1602702913.index
+2546386317.index
+443580131.index
+3524468754.index
+909406968.index
+2909027586.index
+2731773683.index
+2465451487.index
+1568698627.index
+2883721394.index
+1435710167.index
+1652047310.index
+3731975834.index
+1865797976.index
+1043883390.index
+49331061.index
+50056985.index

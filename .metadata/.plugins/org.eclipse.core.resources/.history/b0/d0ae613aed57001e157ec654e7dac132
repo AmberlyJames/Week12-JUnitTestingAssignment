@@ -1,0 +1,9 @@
+package com.promineotech;
+
+public class ParameterResolutionException {
+
+	public ParameterResolutionException() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

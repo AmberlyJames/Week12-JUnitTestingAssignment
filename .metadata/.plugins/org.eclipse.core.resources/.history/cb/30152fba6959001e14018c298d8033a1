@@ -1,0 +1,100 @@
+package com.promineotech;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Objects;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import static org.junit.jupiter.params.provider.Arguments.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+
+import org.junit.jupiter.params.provider.MethodSource;
+
+class TestDemoJUnitTest {
+
+	private TestDemo testDemo;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		testDemo = new TestDemo();
+
+	}
+
+	@ParameterizedTest
+	@MethodSource("com.promineotech.TestDemoJUnitTest#argumentsForAddPositive")
+
+	void assertThatTwoPositiveNumbersAreAddedCorrectly(int a, int b, int expected, boolean expectException) {
+		// Given two positive integers
+
+		if (!expectException) {
+
+			// When the method to add the Integers together is called
+
+			// Then: the integers are added together correctly
+
+			assertThat(testDemo.addPositive(a, b)).isEqualTo(expected);
+		} else {
+			assertThatThrownBy(() -> testDemo.addPositive(a, b)).isInstanceOf(IllegalArgumentException.class);
+		}
+	}
+
+	static Stream<Arguments> argumentsForAddPositive() {
+		//@formatter:off
+		return Stream.of(
+				arguments(1, 4, 5, false),
+				arguments(42, 5000, 5042, false),
+				arguments(0, 1, 1, true),
+				arguments(2, -1, 1, true)
+				
+				);
+		//@formatter:on
+	}
+
+	@Test
+	void assertThatPairsOfPositiveNumbersAreAddedCorrecctly() {
+		assertThat(testDemo.addPositive(4, 6)).isEqualTo(10);
+		assertThat(testDemo.addPositive(100, 16)).isEqualTo(116);
+
+	}
+
+	@ParameterizedTest
+	@MethodSource("com.promineotech.TestDemoJUnitTest#argumentsForFindMedianNumber")
+	void assertThatTheMiddleIntIsFoundCorrectly(int[]numbers, int expected) {
+		
+		//Given: an array of ints
+		
+		//When:the method to find the median is called
+		assertThat(testDemo.findMedianNumber(numbers)).isEqualTo(expected);
+		//Then: The median of the array is returned 
+
+	}
+	static Stream<Arguments> argumentsForFindMedianNumber(){
+		int[] testArray1 = {5, 4, 90, 53, 3, 98};
+		int[] testArray2 = {-9, 89, 4, -90, 2, 51, 1};	//test arrays
+		int[] testArray3 = {5};
+		int[] testArray4 = {-51, -41, -900};
+		
+		//@formatter:off
+		return Stream.of(
+			arguments(testArray1, 29),
+			arguments(testArray2, 2),
+			arguments(testArray3,5),
+			arguments(testArray4,-51)
+			);
+		//@formatter:on
+	}
+	@Test
+	void assertThatNumberSquaredIsCorrect() {
+		TestDemo mockDemo = spy(testDemo);
+		doReturn(5).when(mockDemo).getRandomInt();
+		int fiveSquared = mockDemo.randomNumberSquared();
+		assertThat(fiveSquared).isEqualTo(25);
+	}
+}
